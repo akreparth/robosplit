@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dataset Split Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 200px; }
+        input { width: 100px; padding: 5px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Dataset Split Calculator</h1>
+    
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    
+    <form method="POST">
+        <div class="form-group">
+            <label>Total Original Images:</label>
+            <input type="number" name="total" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Desired Training % (after aug):</label>
+            <input type="number" step="0.1" name="train" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Desired Validation %:</label>
+            <input type="number" step="0.1" name="val" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Desired Test %:</label>
+            <input type="number" step="0.1" name="test" required>
+        </div>
+        
+        <button type="submit">Calculate</button>
+    </form>
+</body>
+</html>

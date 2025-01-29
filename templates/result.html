@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; }
+        .result-section { margin-bottom: 25px; }
+        .highlight { color: #2c3e50; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Split Results</h1>
+    
+    <div class="result-section">
+        <h3>Original Dataset (Before Augmentation)</h3>
+        <p>Total Images: {{ results.original_total }}</p>
+        <p>Training: {{ results.initial_split[0] }} images</p>
+        <p>Validation: {{ results.initial_split[1] }} images</p>
+        <p>Test: {{ results.initial_split[2] }} images</p>
+    </div>
+
+    <div class="result-section">
+        <h3>After Augmentation (3× Training)</h3>
+        <p class="highlight">Total Images: {{ results.total_after_aug }}</p>
+        <p>Training: {{ results.augmented_split[0] }} images</p>
+        <p>Validation: {{ results.augmented_split[1] }} images</p>
+        <p>Test: {{ results.augmented_split[2] }} images</p>
+    </div>
+
+    <a href="/">← Calculate Again</a>
+</body>
+</html>
