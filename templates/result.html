@@ -1,32 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Results</title>
+    <title>Split Results</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; }
-        .result-section { margin-bottom: 25px; }
-        .highlight { color: #2c3e50; font-weight: bold; }
+        /* Shared CSS with index.html */
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --bg: #f8f9fa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            max-width: 600px;
+            background-color: var(--bg);
+            color: var(--primary);
+        }
+
+        h1 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .result-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .split-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .percentage {
+            color: #27ae60;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <h1>Split Results</h1>
     
     <div class="result-section">
-        <h3>Original Dataset (Before Augmentation)</h3>
+        <h2>Original Dataset</h2>
         <p>Total Images: {{ results.original_total }}</p>
-        <p>Training: {{ results.initial_split[0] }} images</p>
-        <p>Validation: {{ results.initial_split[1] }} images</p>
-        <p>Test: {{ results.initial_split[2] }} images</p>
+        <div class="split-grid">
+            <div class="split-item">
+                <h3>Training</h3>
+                <p>{{ results.initial_split[0] }}</p>
+            </div>
+            <div class="split-item">
+                <h3>Validation</h3>
+                <p>{{ results.initial_split[1] }}</p>
+            </div>
+            <div class="split-item">
+                <h3>Test</h3>
+                <p>{{ results.initial_split[2] }}</p>
+            </div>
+        </div>
     </div>
 
     <div class="result-section">
-        <h3>After Augmentation (3× Training)</h3>
+        <h2>After {{ results.multiplier }}× Augmentation</h2>
         <p class="highlight">Total Images: {{ results.total_after_aug }}</p>
-        <p>Training: {{ results.augmented_split[0] }} images</p>
-        <p>Validation: {{ results.augmented_split[1] }} images</p>
-        <p>Test: {{ results.augmented_split[2] }} images</p>
+        <div class="split-grid">
+            <div class="split-item">
+                <h3>Training</h3>
+                <p>{{ results.augmented_split[0] }}</p>
+                <p class="percentage">{{ (results.augmented_split[0]/results.total_after_aug*100)|round(1) }}%</p>
+            </div>
+            <div class="split-item">
+                <h3>Validation</h3>
+                <p>{{ results.augmented_split[1] }}</p>
+                <p class="percentage">{{ (results.augmented_split[1]/results.total_after_aug*100)|round(1) }}%</p>
+            </div>
+            <div class="split-item">
+                <h3>Test</h3>
+                <p>{{ results.augmented_split[2] }}</p>
+                <p class="percentage">{{ (results.augmented_split[2]/results.total_after_aug*100)|round(1) }}%</p>
+            </div>
+        </div>
     </div>
 
-    <a href="/">← Calculate Again</a>
+    <a href="/">← New Calculation</a>
 </body>
 </html>
