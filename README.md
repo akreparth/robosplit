@@ -4,7 +4,7 @@
 [![Flask](https://img.shields.io/badge/Flask-2.0.1-lightgrey.svg)](https://flask.palletsprojects.com/)
 
 A Python-based web application to calculate the initial split of a dataset into training, validation, and test sets, ensuring proper proportions after augmentation in Roboflow.
-
+Try it on : https://robosplit.pythonanywhere.com/
 ## ✨ Key Features
 
 - **Dynamic Augmentation Control**  
