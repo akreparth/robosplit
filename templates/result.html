@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Split Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* Shared CSS with index.html */
         :root {
@@ -18,6 +19,9 @@
             max-width: 600px;
             background-color: var(--bg);
             color: var(--primary);
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 100px; /* Space for footer */
         }
 
         h1 {
@@ -67,6 +71,56 @@
         a:hover {
             text-decoration: underline;
         }
+
+        /* Footer Styles */
+        .site-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+            color: rgba(51, 51, 51, 0.6);
+            font-size: 0.9em;
+        }
+
+        .social-links {
+            margin-top: 5px;
+        }
+
+        .social-links a {
+            color: rgba(51, 51, 51, 0.5);
+            margin: 0 10px;
+            font-size: 32px; /* Adjustable icon size */
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: rgba(51, 51, 51, 0.8);
+            transform: scale(1.1);
+        }
+
+        .github-icon:hover {
+            color: rgba(64, 120, 192, 0.7);
+        }
+
+        .linkedin-icon:hover {
+            color: rgba(0, 119, 181, 0.7);
+        }
     </style>
 </head>
 <body>
@@ -114,5 +168,19 @@
     </div>
 
     <a href="/">← New Calculation</a>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Made with ❤️ by Parth Dhananjay Akre</p>
+            <div class="social-links">
+                <a href="https://github.com/akreparth" target="_blank" class="github-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/akreparth" target="_blank" class="linkedin-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
